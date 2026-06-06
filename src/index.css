@@ -12,3 +12,7 @@
   --color-background: #F8F9FA;
   --color-success: #1B5250;
 }
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--color-background);
+}
