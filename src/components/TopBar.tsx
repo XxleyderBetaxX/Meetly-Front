@@ -2,12 +2,12 @@ import Bell   from "../assets/img/bell.png";
 import Chat   from "../assets/img/chat.png";
 import Search from "../assets/img/search.png";
 
-// Sin props — los iconos de notificaciones y chat no navegan aún
+
 export default function TopBar() {
   return (
     <header className="flex items-center justify-between px-10 py-5 bg-background">
 
-      {/* SearchBar */}
+   
       <div className="relative flex items-center">
         <span className="absolute left-4 pointer-events-none">
           <img src={Search} alt="buscar" className="w-[18px] h-[18px] opacity-40" />

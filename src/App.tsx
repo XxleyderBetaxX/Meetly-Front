@@ -10,15 +10,7 @@ import AjustesPage from "./pages/AjustesPage";
 import SoportePage from "./pages/SoportePage";
 import NotificacionesPage from "./pages/NotificacionesPage";
 
-export type Page =
-  | "inicio"
-  | "cursos"
-  | "agenda"
-  | "historial"
-  | "chat"
-  | "ajustes"
-  | "soporte"
-  | "notificaciones";
+export type Page = | "inicio" | "cursos" | "agenda" |  "historial"   | "chat" | "ajustes" | "soporte" | "notificaciones";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -39,7 +31,7 @@ function App() {
       case "inicio":
         return <InicioPage navigate={setCurrentPage} />;
 
-      case "cursos":
+       case "cursos":
         return <CursosPage />;
 
       case "agenda":
@@ -51,14 +43,14 @@ function App() {
       case "chat":
         return <ChatPage />;
 
-      case "ajustes":
+       case "ajustes":
         return (
           <AjustesPage
             onLogout={() => setLoggedIn(false)}
           />
         );
 
-      case "soporte":
+       case "soporte":
         return <SoportePage />;
 
       case "notificaciones":

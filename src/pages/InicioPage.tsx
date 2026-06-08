@@ -44,7 +44,7 @@ export default function InicioPage({ navigate }: Props) {
   return (
     <div className="p-10">
 
-      {/* Saludo */}
+      
       <div className="mb-8">
         <h1 className="font-primary font-bold text-xl text-primary">
           ¡Hola {student.name}! Que bueno verte de nuevo
