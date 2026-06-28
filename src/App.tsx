@@ -32,7 +32,7 @@ function App() {
         return <InicioPage navigate={setCurrentPage} />;
 
        case "cursos":
-        return <CursosPage />;
+        return <CursosPage navigate={setCurrentPage} />;
 
       case "agenda":
         return <AgendaPage />;
