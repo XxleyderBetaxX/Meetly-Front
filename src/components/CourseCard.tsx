@@ -1,27 +1,40 @@
 interface Props {
-  code: string;     
-  name: string;     
-  sede: string;      
-  onClick?: () => void;
+  id: string;
+  code: string;
+  name: string;
+  sede: string;
+  onVerDetalle: (id: string) => void;
+  onAgendar: (id: string) => void;
 }
 
-export default function CourseCard({ code, name, sede, onClick }: Props) {
+export default function CourseCard({ id, code, name, sede, onVerDetalle, onAgendar }: Props) {
   return (
-    <div
-      onClick={onClick}
-      
-      className={`bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 ${onClick ? "cursor-pointer hover:shadow-md transition-shadow" : ""}`}
-    >
-      
-      <div className="bg-primary h-52 flex items-center justify-center">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+
+      {/* Thumbnail — clic lleva a descripción */}
+      <button
+        onClick={() => onVerDetalle(id)}
+        className="bg-primary h-52 flex items-center justify-center hover:bg-secondary transition-colors"
+      >
         <p className="font-primary font-bold text-white text-lg tracking-wide">{code}</p>
+      </button>
+
+      {/* Info */}
+      <div className="p-5 flex flex-col flex-1 gap-3">
+        <div>
+          <p className="font-primary font-bold text-primary text-[15px] leading-snug">{name}</p>
+          <p className="font-secondary font-semibold text-sm text-primary/60 mt-1">{sede}</p>
+        </div>
+
+        {/* Botón agendar */}
+        <button
+          onClick={() => onAgendar(id)}
+          className="mt-auto w-full py-3 rounded-xl bg-accent hover:bg-accent/90 text-white font-primary font-bold text-sm transition-colors"
+        >
+          Agendar cita
+        </button>
       </div>
 
-    
-      <div className="p-5 pt-4">
-        <p className="font-primary font-bold text-primary text-[15px] leading-snug mb-1">{name}</p>
-        <p className="font-secondary font-semibold text-sm text-primary/60">{sede}</p>
-      </div>
     </div>
   );
-}   
+}
