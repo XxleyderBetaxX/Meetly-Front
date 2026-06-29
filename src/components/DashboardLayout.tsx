@@ -14,13 +14,15 @@ export default function DashboardLayout({ currentPage, navigate, children }: Pro
     <div className="flex min-h-screen bg-background">
       <Sidebar currentPage={currentPage} navigate={navigate} />
 
-       <div className="flex flex-col flex-1 min-w-0">
-        <TopBar />
+      <div className="flex flex-col flex-1 min-w-0">
+        {/* Le pasamos la función navigate aquí de una vez */}
+        <TopBar navigate={navigate} />
+        
         <main className="flex-1">
           {children}
         </main>
         <Footer />
       </div>
-     </div>
+    </div>
   );
 }
