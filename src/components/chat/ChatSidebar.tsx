@@ -1,3 +1,4 @@
+// Este es un componente de barra lateral de chat que muestra una lista de contactos y permite al usuario seleccionar un contacto para chatear. Maneja la carga de contactos, la selección de contactos y la visualización de notificaciones de mensajes no leídos.
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/authContext";
 
@@ -6,19 +7,19 @@ interface Contact {
   name: string;
   first_last_name?: string;
   role: string;
-  unread_count: number; // <-- Propiedad real de la DB
+  unread_count: number; // Agregado para manejar la cantidad de mensajes no leídos
 }
 
 interface ChatSidebarProps {
   activeContact: Contact | null;
   onSelectContact: (contact: Contact) => void;
 }
-
+// Función principal del componente ChatSidebar
 export default function ChatSidebar({ activeContact, onSelectContact }: ChatSidebarProps) {
   const { token } = useAuth();
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
-
+// Función para traer los contactos desde la API
   const fetchContacts = async () => {
     if (!token) return;
     try {
@@ -46,7 +47,7 @@ export default function ChatSidebar({ activeContact, onSelectContact }: ChatSide
     }, 3000);
     return () => clearInterval(interval);
   }, [token]);
-
+// Renderiza la barra lateral con la lista de contactos y sus notificaciones de mensajes no leídos
   return (
     <div className="w-1/3 border-r border-gray-100 flex flex-col bg-slate-50/50">
       <div className="p-5 border-b border-gray-100 bg-white">
@@ -76,7 +77,7 @@ export default function ChatSidebar({ activeContact, onSelectContact }: ChatSide
                     {contact.name} {contact.first_last_name || ""}
                   </span>
                   
-                  {/* BOLITA REAL: Si hay mensajes sin leer y el chat no está abierto, muestra el número */}
+                  {/* Si hay mensajes sin leer y el chat no está abierto, muestra el número */}
                   {!isSelected && contact.unread_count > 0 && (
                     <span className="bg-red-500 text-white text-[10px] font-bold h-5 min-w-5 px-1.5 rounded-full flex items-center justify-center animate-pulse">
                       {contact.unread_count}

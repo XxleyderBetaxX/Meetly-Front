@@ -1,21 +1,19 @@
 import { useState, useEffect } from "react";
-// Importamos el contexto de Leyder
 import { useAuth } from "../context/authContext"; 
-
-// Importamos tus tres componentes nuevos
 import ChatSidebar from "../components/chat/ChatSidebar";
 import ChatWindow from "../components/chat/ChatWindow";
 import MessageInput from "../components/chat/MessageInput";
 
-// 🛠️ Actualizamos la interfaz aquí para que coincida exactamente con el Sidebar
+// Definimos las interfaces para los contactos y mensajes
 interface Contact {
   id: string;
   name: string;
-  first_last_name?: string; // <-- Opcional por si no lo tienen configurado
+  first_last_name?: string; // Opcional por si no lo tienen configurado
   role: string;
-  unread_count: number;     // <-- ¡Obligatorio para que no llore TypeScript!
+  unread_count: number;  // Contador de mensajes no leídos
 }
 
+// Definimos la interfaz para los mensajes
 interface Message {
   id: string;
   sender_id: string;
@@ -25,7 +23,7 @@ interface Message {
 }
 
 export default function ChatPage() {
-  // Jalamos los datos del usuario logueado y el token desde el contexto global
+  // Jalamos los datos del usuario logueado y el token
   const { user, token } = useAuth(); 
   
   const [activeContact, setActiveContact] = useState<Contact | null>(null);
@@ -88,11 +86,11 @@ export default function ChatPage() {
     return () => clearInterval(interval); // Limpia el reloj si cambias de contacto o cierras la página
   }, [activeContact]);
 
-  // Si por alguna razón no está logueado, le tiramos un aviso lindo
+  // Si por alguna razón no está logueado, le tiramos un aviso
   if (!user) {
     return (
       <div className="p-10 text-center text-gray-500 font-primary">
-        Por favor, inicia sesión para acceder al chat. 🔑
+        Por favor, inicia sesión para acceder al chat.
       </div>
     );
   }

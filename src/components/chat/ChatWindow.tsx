@@ -1,3 +1,4 @@
+// Este es un componente de ventana de chat que muestra los mensajes entre el usuario actual y un contacto activo. Maneja el desplazamiento automático, el formateo de la hora y la visualización de mensajes enviados y recibidos.
 import { useEffect, useRef } from "react";
 
 interface Contact {
@@ -43,7 +44,6 @@ export default function ChatWindow({ activeContact, messages, currentUserId }: C
   if (!activeContact) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center p-8 bg-gray-50 text-gray-400">
-        <div className="text-4xl mb-3">💬</div>
         <p className="font-primary text-sm">Selecciona un contacto para iniciar una conversación</p>
       </div>
     );

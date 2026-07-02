@@ -6,11 +6,13 @@ import CursosPage from "./pages/CursosPage"
 import AgendaPage from "./pages/AgendaPage";
 import HistorialPage from "./pages/HistorialPage";
 import ChatPage from "./pages/ChatPage";
-import AjustesPage from "./pages/AjustesPage";
-import SoportePage from "./pages/SoportePage";
+import SoportePage from "./pages/SupportPage";
 import NotificacionesPage from "./pages/NotificacionesPage";
+import EditProfilePage from "./pages/EditProfilePage";
+import SettingsPage from "./pages/SettingsPage";
 
-export type Page = | "inicio" | "cursos" | "agenda" |  "historial"   | "chat" | "ajustes" | "soporte" | "notificaciones";
+
+export type Page = | "inicio" | "editar-perfil" |"cursos" | "agenda" |  "historial"   | "chat" | "ajustes" | "soporte" | "notificaciones";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -31,6 +33,9 @@ function App() {
       case "inicio":
         return <InicioPage navigate={setCurrentPage} />;
 
+       case "editar-perfil":
+        return <EditProfilePage setPage={setCurrentPage} />;
+
        case "cursos":
         return <CursosPage navigate={setCurrentPage} />;
 
@@ -43,12 +48,12 @@ function App() {
       case "chat":
         return <ChatPage />;
 
-       case "ajustes":
-        return (
-          <AjustesPage
+      case "ajustes":
+        return (<SettingsPage
             onLogout={() => setLoggedIn(false)}
-          />
-        );
+              setPage={setCurrentPage} 
+   />
+ );
 
        case "soporte":
         return <SoportePage />;

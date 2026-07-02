@@ -1,3 +1,4 @@
+// Este es un componente de entrada de mensaje que permite a los usuarios escribir y enviar mensajes. Maneja el estado del texto ingresado y llama a una función de envío cuando se envía el formulario.
 import { useState } from "react";
 
 interface MessageInputProps {
